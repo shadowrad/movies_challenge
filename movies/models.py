@@ -29,3 +29,6 @@ class Movie(models.Model):
 class PersonAlias(models.Model):
     name = models.CharField(max_length=100)
     person = models.ForeignKey(Person, related_name='aliases', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name

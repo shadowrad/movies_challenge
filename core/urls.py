@@ -17,6 +17,7 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
+from rest_framework.authtoken import views as drf_views
 
 from movies import views
 
@@ -28,5 +29,6 @@ router.register(r'alias', views.PersonAliasViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('api/', include('rest_framework.urls', namespace='rest_framework'))
+    path('api/', include('rest_framework.urls', namespace='rest_framework')),
+    path('api-token-auth/', drf_views.obtain_auth_token)
 ]
