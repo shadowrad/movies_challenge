@@ -4,6 +4,8 @@ from movies.models import Movie, Person, PersonAlias
 
 
 class MovieSerializer(serializers.HyperlinkedModelSerializer):
+    roman_year = serializers.CharField(source='roman_year')
+
     class Meta:
         model = Movie
         fields = '__all__'

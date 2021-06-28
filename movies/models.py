@@ -4,6 +4,8 @@ from __future__ import unicode_literals
 from django.contrib.auth.models import User
 from django.db import models
 
+from movies.helpers import int_to_Roman
+
 
 class Person(models.Model):
     first_name = models.CharField(max_length=150, null=False)
@@ -18,6 +20,10 @@ class Movie(models.Model):
     casting = models.ManyToManyField(Person, related_name='movies_as_actors')
     directors = models.ManyToManyField(Person, related_name='movies_as_directors')
     producers = models.ManyToManyField(Person, related_name='movies_as_producers')
+
+    def roman_year(self):
+        return int_to_Roman(self.release_year)
+
 
 
 class PersonAlias(models.Model):

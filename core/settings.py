@@ -24,7 +24,7 @@ SECRET_KEY = 'b!-*^)=am9(zc)321(gej6prdjl8+cfe@qcn0qf#lq4j8xwi-4'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['raduran.ar']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -97,6 +97,14 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ]
+}
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
@@ -113,5 +121,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
+
+
+# default static files settings for PythonAnywhere.
+# see https://help.pythonanywhere.com/pages/DjangoStaticFiles for more info
+MEDIA_ROOT = u'/var/www/movies.raduran.ar/media'
+MEDIA_URL = '/media/'
+STATIC_ROOT = u'/var/www/movies.raduran.ar/static'
 STATIC_URL = '/static/'
+
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
